@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+</head>
+<body>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+</style>
+
+<p id="balloon">🎈</p>
+
+<script>
+  const balloon = document.querySelector("#balloon");
+  balloon.style.fontSize = '3vw';
+  let balloonSize = 3;
+  window.addEventListener('keydown', event => {
+    event.preventDefault();
+    if (event.key === 'ArrowUp') {
+      const currentSize = balloon.style.fontSize;
+      balloonSize = balloonSize * 1.1;
+      balloon.style.fontSize = balloonSize + 'vw';
+    } else if (event.key === 'ArrowDown') {
+      const currentSize = balloon.style.fontSize;
+      balloonSize = balloonSize * 0.9;
+      balloon.style.fontSize = balloonSize + 'vw';
+    }
+    if (balloonSize > 50) {
+      balloon.textContent = '🔥'; // explode if too big
+    } else {
+      balloon.textContent = '🎈'; // reverse fire back to balloon when shrunk
+    }
+  });
+</script>
+
+</script>
+</body>
+</html>
